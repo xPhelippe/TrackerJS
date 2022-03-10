@@ -1,6 +1,5 @@
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, BarChart, Bar,Cell } from 'recharts';
-import { Paper } from '@mui/material';
+import { XAxis, YAxis, BarChart, Bar} from 'recharts';
 import './dailyChartView.css'
 
 function DailyChartView(props) {

@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import SubmitForm from './components/submitForm/submitForm';
 import DailyChartView from './components/dailyChartView/dailyChartView';
@@ -110,7 +109,7 @@ function App() {
                 data={dailyData}
                 />
       case 'Week':
-        return <p>Week</p>
+        return <p>{JSON.stringify(weekData)}</p>
       case 'Month':
         return <HeatMap data={monthData} view="month" />
       case 'Year':

@@ -4,12 +4,7 @@ import '@freecodecamp/react-calendar-heatmap/dist/styles.css';
 import { CalendarHeatmap } from 'reaviz';
 import { useEffect,useState } from 'react';
 
-const data = [
-    {
-        "key": new Date("03-01-2021"),
-        "data": 3
-      }
-];
+
 
 function HeatMap(props) {
 
@@ -36,7 +31,7 @@ function HeatMap(props) {
 
         setMonthData(newMonthData)
         
-    })
+    },[props.data])
 
 
     return (
