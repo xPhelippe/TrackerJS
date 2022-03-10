@@ -11,7 +11,7 @@ class DataTransformer {
         let newData = []
 
         // instantiate time slot array 
-        for (let i=6; i <=19; i++ ) {
+        for (let i=0; i <=23; i++ ) {
 
             let timeStr=""
             if (i > 12) {
