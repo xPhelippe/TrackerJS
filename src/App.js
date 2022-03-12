@@ -6,10 +6,10 @@ import { useState, useEffect } from 'react';
 import RadioOptions from './components/radioOptions/radioOptions';
 import Footer from './components/footer/footer';
 import { Paper } from '@mui/material';
-import HeatMap from './components/heatMap/heatMap';
 import DataTransformer from './utils/dataTransformer';
-import FreeCodeHeatMap from './components/freeCodeHeatmap/freeCodeHeatMap';
-
+import {shadows} from '@mui/system';
+import HeatMap from './components/heatMap/heatMap';
+import WeeklyChartView from './components/weeklyChartView/weeklyChartView';
 
 function App() {
 
@@ -39,7 +39,8 @@ function App() {
 
       // random date and time for the past several months
       var day = getRandomArbitrary(1,28);
-      var month = getRandomArbitrary(0,11);
+      var month = getRandomArbitrary(0,12);
+      if(month === 12) month = 11;
       var year = 2022;
       var hour = getRandomArbitrary(0,23);
       var minute = getRandomArbitrary(0,60);
@@ -53,8 +54,9 @@ function App() {
     setRawData(randomData);
 
     let rawDaily = DataTransformer.createDayData(randomData)
-    console.log("raw Daily")
-    console.log(rawDaily)
+    // console.log("raw Daily")
+    // console.log(typeof rawDaily)
+    // console.log(rawDaily)
 
   },[])
 
@@ -70,36 +72,42 @@ function App() {
 
   },[rawData])
 
-  useEffect(() => {
+  // useEffect(() => {
     
-    console.log(dailyData)
+  //   console.log(dailyData)
     
-  },[dailyData])
+  // },[dailyData])
 
-  useEffect(() => {
+  // useEffect(() => {
     
-    console.log(yearData)
+  //   console.log(weekData)
     
-  },[yearData])
+  // },[weekData])
 
-  useEffect(() => {
+  // useEffect(() => {
     
-    console.log(monthData)
+  //   console.log(yearData)
     
-  },[monthData])
+  // },[yearData])
 
-  useEffect(() => {
+  // useEffect(() => {
     
-    console.log(yearData)
+  //   console.log(monthData)
     
-  },[yearData])
+  // },[monthData])
+
+  // useEffect(() => {
+  //   console.log(typeof yearData)
+  //   console.log(yearData)
+    
+  // },[yearData])
 
   function addData(num) {
 
     setRawData([...rawData, {time: new Date(Date.now()), value: parseInt(num)}])
 
-    console.log("data added")
-    console.log(rawData)
+    // console.log("data added")
+    // console.log(rawData)
   }
 
   function renderGraph() {
@@ -109,11 +117,11 @@ function App() {
                 data={dailyData}
                 />
       case 'Week':
-        return <p>{JSON.stringify(weekData)}</p>
+        return <WeeklyChartView data={weekData} />
       case 'Month':
-        return <HeatMap data={monthData} view="month" />
+        return <p>{JSON.stringify(monthData)}</p>
       case 'Year':
-        return <FreeCodeHeatMap data={yearData} view="year" />
+        return <HeatMap data={yearData} />
       default:
         return <DailyChartView
                 data={dailyData}
