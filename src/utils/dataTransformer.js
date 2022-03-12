@@ -65,6 +65,7 @@ class DataTransformer {
         let sunday = sub(now,
             {days:now.getDay()})
 
+
         for (let i = 0; i < 7; i++) {
             
             week.push({
@@ -96,6 +97,16 @@ class DataTransformer {
                 week[j].value += obj[i].value;
             }
         }
+
+        let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+
+        for (let i = 0; i < week.length; i++) {
+            let curTime = week[i].time
+            let newStr = months[curTime.getMonth()] + "-" + curTime.getDate()
+            
+            week[i].time = newStr
+        }
+
         return week;
 
     }
@@ -123,7 +134,7 @@ class DataTransformer {
         for(let i =0; i < obj.length; i++) {
             for (let j = 0; j < month.length; j++) {
                 let monthMatch = obj[i].time.getMonth() === month[j].time.getMonth();
-                let dayMatch = obj[i].time.getDay() === month[j].time.getDay();
+                let dayMatch = obj[i].time.getDate() === month[j].time.getDate();
                 let yearMatch = obj[i].time.getYear() === month[j].time.getYear();
 
                 if(!(monthMatch && dayMatch && yearMatch)) continue;
@@ -157,8 +168,9 @@ class DataTransformer {
 
         for (let i =0; i < obj.length; i++) {
             for(let j = 0; j < year.length; j++) {
+                
                 let monthMatch = obj[i].time.getMonth() === year[j].time.getMonth();
-                let dayMatch = obj[i].time.getDay() === year[j].time.getDay();
+                let dayMatch = obj[i].time.getDate() === year[j].time.getDate();
                 let yearMatch = obj[i].time.getYear() === year[j].time.getYear();
 
                 if(!(monthMatch && dayMatch && yearMatch)) continue;
