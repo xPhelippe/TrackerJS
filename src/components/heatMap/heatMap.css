@@ -1,0 +1,44 @@
+
+.yearContainer {
+    margin: 1rem;
+
+}
+.monthContainer {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+}
+
+
+.dayContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: start;
+    align-content:start;
+    gap: 3px;
+}
+
+.day {
+    width: 1rem;
+    height: 1rem;
+    color:white;
+    background-color: black;
+    font-size: 5px;
+}
+
+.color-scale-1 {
+    background-color: rgba(40, 82, 56,0.0);
+}
+
+.color-scale-2 {
+    background-color: rgba(40, 82, 56,0.33);
+}
+
+.color-scale-3 {
+    background-color: rgba(40, 82, 56,0.66);
+}
+
+.color-scale-4 {
+    background-color: rgba(40, 82, 56,1);
+}
