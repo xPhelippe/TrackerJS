@@ -7,7 +7,6 @@ import RadioOptions from './components/radioOptions/radioOptions';
 import Footer from './components/footer/footer';
 import { Paper } from '@mui/material';
 import DataTransformer from './utils/dataTransformer';
-import {shadows} from '@mui/system';
 import HeatMap from './components/heatMap/heatMap';
 import WeeklyChartView from './components/weeklyChartView/weeklyChartView';
 
@@ -53,7 +52,6 @@ function App() {
 
     setRawData(randomData);
 
-    let rawDaily = DataTransformer.createDayData(randomData)
     // console.log("raw Daily")
     // console.log(typeof rawDaily)
     // console.log(rawDaily)

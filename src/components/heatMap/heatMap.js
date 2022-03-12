@@ -97,7 +97,7 @@ function HeatMap(props) {
                                         if(obj.time.getMonth() !== monthKey)  return (null)
 
                                         return (
-                                            <div key={key} className={"day " + "color-scale-" + obj.color}>
+                                            <div key={key} className={"day color-scale-" + obj.color}>
                                             </div>
                                         )
                                     })}
