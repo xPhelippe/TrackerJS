@@ -9,6 +9,17 @@ import { Paper } from '@mui/material';
 import DataTransformer from './utils/dataTransformer';
 import HeatMap from './components/heatMap/heatMap';
 import WeeklyChartView from './components/weeklyChartView/weeklyChartView';
+import MonthHeatMap from './components/monthHeatMap/monthHeatMap';
+import { createTheme, ThemeProvider} from '@mui/material/styles';
+
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#285238'
+    }
+  }
+});
 
 function App() {
 
@@ -117,7 +128,7 @@ function App() {
       case 'Week':
         return <WeeklyChartView data={weekData} />
       case 'Month':
-        return <p>{JSON.stringify(monthData)}</p>
+        return <MonthHeatMap data={monthData} />
       case 'Year':
         return <HeatMap data={yearData} />
       default:
@@ -129,28 +140,30 @@ function App() {
   }
   
   return (
-    <div className="App">
-      <header className="App-header">
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <header className="App-header">
 
-        <Header />
-        <Paper>
-          <SubmitForm submit={addData} />
-          
-            <div className="chartandOptions">
-              <div className="options">
-                <RadioOptions 
-                  setOption={setGraphSelection}/>
+          <Header />
+          <Paper>
+            <SubmitForm submit={addData} />
+            
+              <div className="chartandOptions">
+                <div className="options">
+                  <RadioOptions 
+                    setOption={setGraphSelection}/>
 
+                </div>
+                <div className="chart">
+                  {renderGraph()}
+                </div>
+                
               </div>
-              <div className="chart">
-                {renderGraph()}
-              </div>
-              
-            </div>
-        </Paper>
-        <Footer />
-      </header>
-    </div>
+          </Paper>
+          <Footer />
+        </header>
+      </div>
+    </ThemeProvider>
   );
 }
 
