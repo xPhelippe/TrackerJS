@@ -120,7 +120,7 @@ class DataTransformer {
 
         let month = []
         let thisMonth = new Date(Date.now()).getMonth()
-        let thisYear = new Date(Date.now()).getYear()
+        let thisYear = new Date(Date.now()).getFullYear()
         let firstDayofMonth = new Date(thisYear,thisMonth,1)
 
         for (let i =0; i < 31; i++) {
