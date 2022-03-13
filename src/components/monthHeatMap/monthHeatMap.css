@@ -1,0 +1,35 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    margin: 2rem;
+}
+
+.emptyDay,
+.MviewDay {
+    border:1px solid rgba(40, 82, 56,0.0);
+    width:2.5rem;
+    height:2.5rem;
+    display: block;
+    color:blue;
+    font-size: 5px;
+}
+
+.emptyDay {
+    background-color: white;
+}
+
+.color-scale-1 {
+    background-color: rgba(40, 82, 56,0.0);
+}
+
+.color-scale-2 {
+    background-color: rgba(40, 82, 56,0.33);
+}
+
+.color-scale-3 {
+    background-color: rgba(40, 82, 56,0.66);
+}
+
+.color-scale-4 {
+    background-color: rgba(40, 82, 56,1);
+}
