@@ -80,10 +80,10 @@ function HeatMap(props) {
 
     },[props.data])
 
-
     return (
         <React.Fragment>
-            <div style={widthStyle} className={"yearContainer " + widthStyle}>
+            <h2>{props.data[0].time.getFullYear()}</h2>
+            <div style={widthStyle} className="yearContainer">
                 <div className="monthContainer">
                     {
                         months.map((obj, monthKey) => {

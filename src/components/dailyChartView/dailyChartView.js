@@ -6,8 +6,45 @@ function DailyChartView(props) {
 
     const data = props.data
 
+    const now = new Date(Date.now())
+
+    const days = [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday'
+    ]
+
+    const months = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+    ]
+
+    const day =
+        days[now.getDay()]
+        + ", "
+        + months[now.getMonth()]
+        + " "
+        + now.getDate()
+        + ", "
+        + now.getFullYear()
+
     return (
         <React.Fragment>
+        <h2>{day}</h2>
         <div className="barChart">
             <BarChart width={800} height={400} data={data} className="barChart" >
                 <Bar type="monotone" dataKey="value" fill="#285238"/>
