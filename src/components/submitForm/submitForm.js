@@ -19,7 +19,7 @@ function SubmitForm(props) {
     return (
         <React.Fragment>
             <div className="textBoxContainer">
-                <p>Input new entry: </p>
+                <p>Input New Entry: </p>
                 <TextField 
                     value = {newVal}
                     onChange={evt => setNewVal(evt.target.value)}
@@ -31,7 +31,7 @@ function SubmitForm(props) {
                         backgroundColor: "#285238"
                     }}
                     variant="contained"
-                    onClick={click}>Submit</Button>
+                    onClick={click}>Add</Button>
             </div>
         </React.Fragment>
     );
