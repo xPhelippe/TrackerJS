@@ -69,7 +69,7 @@ class DataGenerator {
 
         let today = new Date(Date.now())
 
-        let year = new Date(Date.now()).getFullYear()
+        //let year = new Date(Date.now()).getFullYear()
         //let start = new Date(year,0)
         
         let n = 400
