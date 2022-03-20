@@ -31,6 +31,7 @@ function Navbar(props) {
                 <a 
                     href="https://github.com/xPhelippe/TrackerJS" 
                     style={{textDecoration:'inherit', color:'inherit'}}
+                    target="_blank" rel="noopener noreferrer"
                     ><Button variant="Text">Github</Button></a>
             </div>
         </React.Fragment>
