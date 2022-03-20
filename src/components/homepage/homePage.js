@@ -9,9 +9,11 @@ import HeatMap from '../heatMap/heatMap';
 import WeeklyChartView from '../weeklyChartView/weeklyChartView';
 import MonthHeatMap from '../monthHeatMap/monthHeatMap';
 import './homePage.css'
+import useLocalStorage from 'use-local-storage';
 
 function HomePage(props) {
-    const [rawData, setRawData] = useState([]);
+    const [localData, setLocalData] = useLocalStorage('data',[])
+    const [rawData, setRawData] = useState('');
 
     const [dailyData, setDailyData] = useState([]);
     const [weekData, setWeekData] = useState([]);
@@ -20,36 +22,19 @@ function HomePage(props) {
 
     const [graphSelection, setGraphSelection] = useState('');
 
-    // helper function for random number generation
-    function getRandomArbitrary(min, max) {
-        return Math.floor(Math.random() * (max - min) + min);
-    }
-
-    // Create some random data for now
     useEffect(() => {
-        var n = 1500; //number of data instances to create
 
-    var randomData = []
+        let newData = []
 
-    for(var i = 0; i < n; i++) {
-      // get a random value
-      var value = getRandomArbitrary(0,20);
+        for(let i = 0; i < localData.length; i++) {
+            newData.push({
+                time: new Date(localData[i].time),
+                value: localData[i].value
+            })
+        }
 
-      // random date and time for the past several months
-      var day = getRandomArbitrary(1,28);
-      var month = getRandomArbitrary(0,12);
-      if(month === 12) month = 11;
-      var year = 2022;
-      var hour = getRandomArbitrary(0,23);
-      var minute = getRandomArbitrary(0,60);
-      var second = 0;
-
-      var time = new Date(year, month, day, hour, minute, second);
-
-      randomData.push({time:time, value:value})
-    }
-
-        setRawData(randomData);
+        setRawData(newData)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
 
@@ -64,6 +49,7 @@ function HomePage(props) {
 
     function addData(num) {
         setRawData([...rawData, {time: new Date(Date.now()), value: parseInt(num)}])
+        setLocalData([...rawData, {time: new Date(Date.now()), value: parseInt(num)}])
     }
 
     function renderGraph() {

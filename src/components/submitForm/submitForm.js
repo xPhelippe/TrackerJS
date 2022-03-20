@@ -27,9 +27,7 @@ function SubmitForm(props) {
                     size="small"/>
                 <Button 
                     className="button"
-                    style={{
-                        backgroundColor: "#285238"
-                    }}
+                    
                     variant="contained"
                     onClick={click}>Add</Button>
             </div>

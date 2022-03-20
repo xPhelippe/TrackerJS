@@ -11,3 +11,4 @@
 - let  the user modify their data
 - add a "What are you tracking?" feature
 - make mobile friendly
+- add tooltips

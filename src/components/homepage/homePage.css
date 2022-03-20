@@ -4,3 +4,7 @@
     margin: 10px;
     grid-gap: 0px;
   }
+
+  .chart {
+    text-align: center;
+  }

@@ -1,0 +1,9 @@
+.divButContainer {
+    display: flex;
+    justify-content: center;
+    margin: 0.2rem;
+}
+
+.divButContainer > button {
+    margin: 0.3rem;
+}

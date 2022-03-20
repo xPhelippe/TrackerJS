@@ -8,7 +8,6 @@ function Navbar(props) {
     const links = [
         'Home',
         'About',
-        'Github',
         'Demo',
         'Edit'
     ]
@@ -28,6 +27,11 @@ function Navbar(props) {
                     )
                     
                 })}
+
+                <a 
+                    href="https://github.com/xPhelippe/TrackerJS" 
+                    style={{textDecoration:'inherit', color:'inherit'}}
+                    ><Button variant="Text">Github</Button></a>
             </div>
         </React.Fragment>
     )

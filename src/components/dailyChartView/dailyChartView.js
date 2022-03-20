@@ -1,8 +1,17 @@
 import React from 'react';
 import { XAxis, YAxis, BarChart, Bar} from 'recharts';
 import './dailyChartView.css'
+import useLocalStorage from 'use-local-storage';
 
 function DailyChartView(props) {
+
+
+
+    const primColor = useLocalStorage('Color',
+        getComputedStyle(document.querySelector(':root'))
+        .getPropertyValue('--back-color').trim()
+    )[0]
+
 
     const data = props.data
 
@@ -47,14 +56,14 @@ function DailyChartView(props) {
         <h2>{day}</h2>
         <div className="barChart">
             <BarChart width={800} height={400} data={data} className="barChart" >
-                <Bar type="monotone" dataKey="value" fill="#285238"/>
+                <Bar type="monotone" dataKey="value" fill={primColor}/>
                 <XAxis 
                     dataKey="time"
                     type="category"
                     className="barChart"
-                    stroke="#285238"/>
+                    />
                 <YAxis 
-                    stroke="#285238"/>
+                    />
                 
             </BarChart>
         </div>
