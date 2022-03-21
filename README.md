@@ -1,76 +1,65 @@
 
 # TrackerJS
-A way to track a habit
+This project was creates to help my keep my React skills sharp and even expand them a little bit. The use case for the app is tracking a key habit through a quantifiable metric. Underneath the UI, the app stores a time series of every entry along with the date and time it was submitted. From there, hooks are used to generate the data for all the views. All calculating is done on the client side
+
+### Graphics
+
+Each graphic is it's own component. The [day](https://github.com/xPhelippe/TrackerJS/tree/main/src/components/dailyChartView) and [week](https://github.com/xPhelippe/TrackerJS/tree/main/src/components/weeklyChartView) components came from a third party component library listed below. The [month](https://github.com/xPhelippe/TrackerJS/tree/main/src/components/monthHeatMap) and [year](https://github.com/xPhelippe/TrackerJS/tree/main/src/components/heatMap) components were custom created in React with the help of css grid styling.
+
+### Data
+
+Once a number is added, the value and the current timestamp are appended to an array and stored in local storage. When the home page is loaded, This array is read and a useEffect() hook is triggered to process the data for each of the 4 views, relying on helper functions created in [src/utils/dataTransformer.js](https://github.com/xPhelippe/TrackerJS/blob/main/src/utils/dataTransformer.js) for the data processing.
 
 check it out here: https://elated-bhaskara-d19972.netlify.app
 
-# Getting Started with Create React App
+### Changing the color
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A third part component (listed below) was used for the color picker. Once the user clicked save, the ':root' css selector was modified with the user's new color. In addition, the MUI theme had to be changed. I tried using the localStorage hook at the highest level component to accomplish this, but my useEffect((),[localStorage]) hook would not trigger. Instead I used the searchParams() hook and passed the color as a search parameter. Future updates might look into making a custon localStorage hook that exhibits the behavior I am looking for.
 
-## Available Scripts
+# How to Use
 
-In the project directory, you can run:
+Once you have cloned the repository, run the following code to launch the app.
 
-### `npm start`
+```bash
+$ cd TrackerJS
+$ npm install
+$ npm start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Frameworks and Libarries Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### [React](https://reactjs.org/)
 
-### `npm test`
+A framework for creating front end websites. Was used to create component view for the different pages on the website. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### [Material UI](https://mui.com/)
 
-### `npm run build`
+A component library used in conjunction with React to ease the styling aspect of creating UIs. Components such as buttons, radio buttons, input fields, and many more were used to speed up development of the site.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### [Recharts](https://recharts.org/en-US)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+A React library for visualizing data quickly and easily. Used to create the bar charts for the daily and weekly views.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### [use-local-storage](https://www.npmjs.com/package/use-local-storage)
 
-### `npm run eject`
+A hook library for quick and easy access to the local storage of a browser. Used to store the user's color and their data in between browser sessions
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### [date-fns](https://date-fns.org/)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+a javascript library for Date objects. Used to process the data from time series in to the day, week, month, and year view
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### [React Router](https://reactrouter.com/)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+A React library for creating and routing to pages on the website. Used to create the different of the site.
 
-## Learn More
+# Future Features
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+As with all projects, I had to pick a place to stop at some point. Below is a list of features that may be implemented in the future if I were to revisit the app
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- let  the user modify their data
+- let the user track multiple habits through a drop down menu
+- Show numbers on bar graph and on hover for heat maps
+- let the user name the habit they are trying to build
+- make the website mobile friendly
+- let the user add data at a different time than now
+- add input validation and a small pop-up for errors on the input field
