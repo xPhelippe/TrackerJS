@@ -23,8 +23,9 @@ function SubmitForm(props) {
                 <TextField 
                     value = {newVal}
                     onChange={evt => setNewVal(evt.target.value)}
-                    id="outlined-basic" variant="outlined" 
-                    size="small"/>
+                    id="outlined-basic" variant="outlined"
+                    size="small"
+                    placeholder="Please Enter a Number"/>
                 <Button 
                     className="button"
                     
