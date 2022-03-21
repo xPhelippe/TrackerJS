@@ -9,9 +9,9 @@ import useLocalStorage from 'use-local-storage';
 
 function Edit(props) {
 
-    const setLocalColor = useLocalStorage("Color",'#285238')[1] ;
+    const [localColor,setLocalColor] = useLocalStorage("Color",'#285238') ;
     const setParams = useSearchParams()[1]
-    const [color, setColor] = useState('')
+    const [color, setColor] = useState(localColor)
 
     function saveColor(color) {
 
