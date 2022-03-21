@@ -52,6 +52,10 @@ a javascript library for Date objects. Used to process the data from time series
 
 A React library for creating and routing to pages on the website. Used to create the different of the site.
 
+### [react-colorful](https://omgovich.github.io/react-colorful/)
+
+A React component for picking a color
+
 # Future Features
 
 As with all projects, I had to pick a place to stop at some point. Below is a list of features that may be implemented in the future if I were to revisit the app
