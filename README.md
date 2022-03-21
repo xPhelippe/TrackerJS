@@ -26,7 +26,7 @@ $ npm install
 $ npm start
 ```
 
-# Frameworks and Libarries Used
+# Frameworks and Libraries Used
 
 ### [React](https://reactjs.org/)
 
