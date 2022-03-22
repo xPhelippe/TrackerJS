@@ -14,7 +14,7 @@ Once a number is added, the value and the current timestamp are appended to an a
 
 ### Changing the color
 
-A third part component (listed below) was used for the color picker. Once the user clicked save, the ':root' css selector was modified with the user's new color. In addition, the MUI theme had to be changed. I tried using the localStorage hook at the highest level component to accomplish this, but my useEffect((),[localStorage]) hook would not trigger. Instead I used the searchParams() hook and passed the color as a search parameter. Future updates might look into making a custon localStorage hook that exhibits the behavior I am looking for.
+A third party component (listed below) was used for the color picker. Once the user clicked save, the ':root' css selector was modified with the user's new color. In addition, the MUI theme had to be changed. I tried using the localStorage hook at the highest level component to accomplish this, but my useEffect((),[localStorage]) hook would not trigger. Instead I used the searchParams() hook and passed the color as a search parameter. Future updates might look into making a custon localStorage hook that exhibits the behavior I am looking for.
 
 # How to Use
 
