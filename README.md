@@ -1,16 +1,16 @@
 
 # TrackerJS
-This project was creates to help my keep my React skills sharp and even expand them a little bit. The use case for the app is tracking a key habit through a quantifiable metric. Underneath the UI, the app stores a time series of every entry along with the date and time it was submitted. From there, hooks are used to generate the data for all the views. All calculating is done on the client side
+Welcome to Tracker.js, a productivity app aimed to help the user slowly develop a habit. Launch the website to see a day, week, month, and year view of progress as a key habit is tracked. To track a habit, enter a number into the input field and press 'Add'; the value and time is tracked for all entries. Look back at the end of the year and see the progress made!
+
+check it out here: https://elated-bhaskara-d19972.netlify.app
 
 ### Graphics
 
-Each graphic is it's own component. The [day](https://github.com/xPhelippe/TrackerJS/tree/main/src/components/dailyChartView) and [week](https://github.com/xPhelippe/TrackerJS/tree/main/src/components/weeklyChartView) components came from a third party component library listed below. The [month](https://github.com/xPhelippe/TrackerJS/tree/main/src/components/monthHeatMap) and [year](https://github.com/xPhelippe/TrackerJS/tree/main/src/components/heatMap) components were custom created in React with the help of css grid styling.
+Each graphic is it's own component. The [day](https://github.com/xPhelippe/TrackerJS/tree/main/src/components/dailyChartView) and [week](https://github.com/xPhelippe/TrackerJS/tree/main/src/components/weeklyChartView) components came from a third party component library listed below. The [month](https://github.com/xPhelippe/TrackerJS/tree/main/src/components/monthHeatMap) and [year](https://github.com/xPhelippe/TrackerJS/tree/main/src/components/heatMap) components were custom created in React with the help of some nifty css grid styling.
 
 ### Data
 
 Once a number is added, the value and the current timestamp are appended to an array and stored in local storage. When the home page is loaded, This array is read and a useEffect() hook is triggered to process the data for each of the 4 views, relying on helper functions created in [src/utils/dataTransformer.js](https://github.com/xPhelippe/TrackerJS/blob/main/src/utils/dataTransformer.js) for the data processing.
-
-check it out here: https://elated-bhaskara-d19972.netlify.app
 
 ### Changing the color
 
@@ -42,11 +42,11 @@ A React library for visualizing data quickly and easily. Used to create the bar 
 
 ### [use-local-storage](https://www.npmjs.com/package/use-local-storage)
 
-A hook library for quick and easy access to the local storage of a browser. Used to store the user's color and their data in between browser sessions
+A hook library for quick and easy access to the local storage of a browser. Used to store the user's color and their data in between browser sessions.
 
 ### [date-fns](https://date-fns.org/)
 
-a javascript library for Date objects. Used to process the data from time series in to the day, week, month, and year view
+a javascript library for Date objects. Used to process the data from time series in to the day, week, month, and year view.
 
 ### [React Router](https://reactrouter.com/)
 
@@ -54,7 +54,7 @@ A React library for creating and routing to pages on the website. Used to create
 
 ### [react-colorful](https://omgovich.github.io/react-colorful/)
 
-A React component for picking a color
+A React component for picking a color.
 
 # Future Features
 
