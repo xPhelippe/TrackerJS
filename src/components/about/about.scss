@@ -1,0 +1,71 @@
+@import '../../utils/variables';
+
+.about-end {
+    margin: 3rem 0 0;
+}
+
+.aboutGrid {
+    max-width: $max-content-width;
+    margin: 2rem 4rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "header ."
+        "content image" ;
+    gap: 0.5rem;
+
+    div {
+        p {
+            text-align: left;
+            margin: 0 2rem; 
+        }
+    }
+
+    .header {
+        grid-area: header;
+        background-color: inherit;
+        color: black;
+        text-align: left;
+        font-size: 2rem;
+        margin: 0;
+    }
+
+    .content {
+        grid-area: content;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        color: rgb(114, 114, 114);
+    }
+
+    .image {
+        grid-area: image;
+        width: 100%
+    }
+
+}
+
+@media (max-width: $max-mobile-width) {
+    .aboutGrid {
+        margin: 2rem 2rem 0;
+        grid-template-areas:
+        "header"
+        "content"
+        "image";
+        grid-template-columns: 1fr;
+        
+        .content {
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .header {
+            text-align: center;
+            font-size: 1.5rem;
+        }
+    }
+}
+
+
+.aboutPic {
+    width: 100px;
+}

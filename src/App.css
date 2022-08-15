@@ -4,6 +4,12 @@
   --back-color: #285238;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 
 
 body {
