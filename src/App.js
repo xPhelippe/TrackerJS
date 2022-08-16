@@ -6,6 +6,7 @@ import Navbar from "./components/navbar/navbar";
 import { Outlet, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useLocalStorage from "use-local-storage";
+import Paper from "@mui/material/Paper";
 
 function App() {
     const localColor = useLocalStorage("Color", "#285238")[0];
@@ -52,7 +53,9 @@ function App() {
                 <div className="App-header">
                     <Header />
                     <Navbar />
-                    <Outlet />
+                    <Paper>
+                        <Outlet />
+                    </Paper>
                     <Footer />
                 </div>
             </div>

@@ -72,16 +72,14 @@ function HomePage(props) {
 
     return (
         <React.Fragment>
-            <Paper>
-                <SubmitForm submit={addData} />
+            <SubmitForm submit={addData} />
 
-                <div className="chartandOptions">
-                    <div className="options">
-                        <RadioOptions setOption={setGraphSelection} />
-                    </div>
-                    <div className="chart">{renderGraph()}</div>
+            <div className="chartandOptions">
+                <div className="options">
+                    <RadioOptions setOption={setGraphSelection} />
                 </div>
-            </Paper>
+                <div className="chart">{renderGraph()}</div>
+            </div>
         </React.Fragment>
     );
 }
