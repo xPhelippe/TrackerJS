@@ -1,75 +1,72 @@
-import React from 'react';
-import { XAxis, YAxis, BarChart, Bar} from 'recharts';
-import './dailyChartView.css'
-import useLocalStorage from 'use-local-storage';
+import React from "react";
+import { XAxis, YAxis, BarChart, Bar, ResponsiveContainer } from "recharts";
+import "./dailyChartView.scss";
+import useLocalStorage from "use-local-storage";
 
 function DailyChartView(props) {
+    const primColor = useLocalStorage(
+        "Color",
+        getComputedStyle(document.querySelector(":root"))
+            .getPropertyValue("--back-color")
+            .trim()
+    )[0];
 
+    const data = props.data;
 
-
-    const primColor = useLocalStorage('Color',
-        getComputedStyle(document.querySelector(':root'))
-        .getPropertyValue('--back-color').trim()
-    )[0]
-
-
-    const data = props.data
-
-    const now = new Date(Date.now())
+    const now = new Date(Date.now());
 
     const days = [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday'
-    ]
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+    ];
 
     const months = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December'
-    ]
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+    ];
 
     const day =
-        days[now.getDay()]
-        + ", "
-        + months[now.getMonth()]
-        + " "
-        + now.getDate()
-        + ", "
-        + now.getFullYear()
+        days[now.getDay()] +
+        ", " +
+        months[now.getMonth()] +
+        " " +
+        now.getDate() +
+        ", " +
+        now.getFullYear();
 
     return (
         <React.Fragment>
-        <h2>{day}</h2>
-        <div className="barChart">
-            <BarChart width={800} height={400} data={data} className="barChart" >
-                <Bar type="monotone" dataKey="value" fill={primColor}/>
-                <XAxis 
-                    dataKey="time"
-                    type="category"
-                    className="barChart"
-                    />
-                <YAxis 
-                    />
-                
-            </BarChart>
-        </div>
+            <h2>{day}</h2>
+            <div className="barChart">
+                <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={data}>
+                        <Bar type="monotone" dataKey="value" fill={primColor} />
+                        <XAxis
+                            dataKey="time"
+                            type="category"
+                            className="barChart"
+                        />
+                        <YAxis />
+                    </BarChart>
+                </ResponsiveContainer>
+            </div>
         </React.Fragment>
-    )
-
+    );
 }
 
 export default DailyChartView;

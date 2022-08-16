@@ -1,0 +1,15 @@
+@import "../../utils/variables";
+
+.chartandOptions {
+    width: min(100%,$max-content-width);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    margin: 10px;
+    grid-gap: 0px;
+}
+
+.chart {
+  text-align: center;
+  width: 70vw;
+  height: 30vw;
+}

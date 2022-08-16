@@ -1,3 +1,5 @@
+@import "./utils/variables";
+
 :root {
   /*--back-color: #004736;*/
   /*--back-color: #231f20;*/
@@ -32,7 +34,7 @@ body {
 
 .App-header {
   margin: auto;
-  width: 80vw;
+  width: min(80vw,$max-content-width);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
