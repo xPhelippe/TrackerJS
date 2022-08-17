@@ -16,7 +16,7 @@ function WeeklyChartView(props) {
         props.data[0].time + " to " + props.data[props.data.length - 1].time;
 
     return (
-        <React.Fragment>
+        <div className="weeklyView">
             <h2>{title}</h2>
             <div className="barChart">
                 <ResponsiveContainer width="100%" height="100%">
@@ -36,7 +36,7 @@ function WeeklyChartView(props) {
                     </BarChart>
                 </ResponsiveContainer>
             </div>
-        </React.Fragment>
+        </div>
     );
 }
 

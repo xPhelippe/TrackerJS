@@ -5,11 +5,11 @@
     display: grid;
     grid-template-columns: auto 1fr;
     margin: 10px;
-    grid-gap: 0px;
+    grid-gap: 0.5rem;
 }
 
 .chart {
   text-align: center;
-  width: 70vw;
-  height: 30vw;
+
+  min-height: 30vw;
 }

@@ -50,7 +50,7 @@ function DailyChartView(props) {
         now.getFullYear();
 
     return (
-        <React.Fragment>
+        <div className="dailyView">
             <h2>{day}</h2>
             <div className="barChart">
                 <ResponsiveContainer width="100%" height="100%">
@@ -65,7 +65,7 @@ function DailyChartView(props) {
                     </BarChart>
                 </ResponsiveContainer>
             </div>
-        </React.Fragment>
+        </div>
     );
 }
 
