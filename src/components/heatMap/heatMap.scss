@@ -1,14 +1,31 @@
+@import "../../utils/variables";
+
+
+$day-w: 1.5rem;
+$day-h: 1.5rem;
+
+$day-w-sm: 1.0rem;
+$day-h-sm: 1.0rem;
+
+
+
 
 .yearContainer {
-    margin: 1rem;
-
+    width: min(calc($day-w * 35),70vw);
+    height: inherit;
+    margin: 0 auto;
+    
 }
+
 .monthContainer {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 10px;
-}
+    gap: 0.5rem;
+    justify-content: center;
 
+
+}
+ 
 
 .dayContainer {
     display: flex;
@@ -16,11 +33,13 @@
     justify-content: flex-start;
     align-items: flex-start;
     align-content: flex-start;
+    // width: calc($day-w * 32);
+    // height: $day-h;
 }
 
 .day {
-    width: 1rem;
-    height: 1rem;
+    width: $day-w;
+    height: $day-h;
     color:white;
     font-size: 5px;
 }
@@ -39,4 +58,13 @@
 
 .color-scale-4 {
     background-color: rgba(40, 82, 56,1);
+}
+
+@media (max-width: $max-mobile-width ) {
+
+    .day {
+        width: $day-w-sm;
+        height: $day-h-sm;
+    }
+
 }
