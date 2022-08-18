@@ -1,17 +1,14 @@
 @import "../../utils/variables";
 
 
-$day-w: 1.5rem;
-$day-h: 1.5rem;
-
-$day-w-sm: 1.0rem;
-$day-h-sm: 1.0rem;
+$day-w: 1.0rem;
+$day-h: 1.0rem;
 
 
 
 
 .yearContainer {
-    width: min(calc($day-w * 35),70vw);
+    max-width: min(calc($day-w * 34),70vw);
     height: inherit;
     margin: 0 auto;
     
@@ -33,8 +30,6 @@ $day-h-sm: 1.0rem;
     justify-content: flex-start;
     align-items: flex-start;
     align-content: flex-start;
-    // width: calc($day-w * 32);
-    // height: $day-h;
 }
 
 .day {
@@ -60,11 +55,3 @@ $day-h-sm: 1.0rem;
     background-color: rgba(40, 82, 56,1);
 }
 
-@media (max-width: $max-mobile-width ) {
-
-    .day {
-        width: $day-w-sm;
-        height: $day-h-sm;
-    }
-
-}
