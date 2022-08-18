@@ -1,15 +1,41 @@
 @import "../../utils/variables";
 
 .chartandOptions {
-    width: min(100%,$max-content-width);
-    display: grid;
-    grid-template-columns: auto 1fr;
-    margin: 10px;
-    grid-gap: 0.5rem;
+    max-width: $max-content-width;
+    margin: 1rem;
+}
+
+.options {
+  grid-area: options;
+  margin-bottom: 2rem;
 }
 
 .chart {
   text-align: center;
-
-  min-height: 30vw;
+  grid-area: chart;
+  
 }
+
+.css-qfz70r-MuiFormGroup-root {
+  justify-content: center;
+}
+
+.habitSelector {
+  margin: 1rem;
+}
+
+@media (min-width: $breakpoint-1) {
+
+  .chartandOptions {
+    display: grid;
+    
+    grid-template-columns: 15% 85%;
+    grid-template-areas: "options chart";
+  }
+  
+}
+
+
+
+
+

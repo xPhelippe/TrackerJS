@@ -10,8 +10,12 @@ import WeeklyChartView from "../weeklyChartView/weeklyChartView";
 import MonthHeatMap from "../monthHeatMap/monthHeatMap";
 import "./homePage.scss";
 import useLocalStorage from "use-local-storage";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
 function HomePage(props) {
+    const [habits, setHabits] = useState(["gym", "water"]);
+    const [selectedhabit, setSelectedHabit] = useState("gym");
     const [localData, setLocalData] = useLocalStorage("data", []);
     const [rawData, setRawData] = useState("");
 
@@ -55,6 +59,10 @@ function HomePage(props) {
         ]);
     }
 
+    function changeSelectedHabit(e) {
+        setSelectedHabit(e.target.value);
+    }
+
     function renderGraph() {
         switch (graphSelection) {
             case "Day":
@@ -72,6 +80,23 @@ function HomePage(props) {
 
     return (
         <React.Fragment>
+            {/* <div className="habitSelector">
+                <Select
+                    fullWidth
+                    value={selectedhabit}
+                    label="Habit"
+                    onChange={changeSelectedHabit}
+                >
+                    {habits &&
+                        habits.map((hab, key) => {
+                            return (
+                                <MenuItem value={hab} key={key}>
+                                    {hab}
+                                </MenuItem>
+                            );
+                        })}
+                </Select>
+            </div> */}
             <SubmitForm submit={addData} />
 
             <div className="chartandOptions">
