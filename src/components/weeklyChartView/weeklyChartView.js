@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { XAxis, YAxis, BarChart, Bar, ResponsiveContainer } from "recharts";
-import "./weeklyChartView.css";
+import "./weeklyChartView.scss";
 import React from "react";
 
 function WeeklyChartView(props) {
