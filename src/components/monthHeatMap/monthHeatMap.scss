@@ -1,6 +1,6 @@
 @import "../../utils/variables";
 
-$day-wh: 2.5rem;
+$day-wh: clamp(2rem, 7vw, 5rem);
 
 $day-wh-sm: 2.0rem;
 
@@ -22,19 +22,19 @@ $day-wh-sm: 2.0rem;
     font-size: 5px;
 }
 
-@media (max-width: $max-mobile-width ) {
+// @media (max-width: $max-mobile-width ) {
 
-    .emptyDay,
-    .MviewDay {
-        width:$day-wh-sm;
-        height:$day-wh-sm;
-    }
+//     .emptyDay,
+//     .MviewDay {
+//         width:$day-wh-sm;
+//         height:$day-wh-sm;
+//     }
 
-    .container {
-        grid-template-columns: repeat(7,$day-wh-sm);
-    }
+//     .container {
+//         grid-template-columns: repeat(7,$day-wh-sm);
+//     }
     
-}
+// }
 
 .emptyDay {
     background-color: white;

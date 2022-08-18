@@ -3,8 +3,6 @@ import "./monthHeatMap.scss";
 import { useEffect, useState } from "react";
 
 function MonthHeatMap(props) {
-    "";
-
     const months = [
         "January",
         "Febuary",
