@@ -1,14 +1,25 @@
 @import "../../utils/variables";
 
-.barChart {
+.dailyView .barChart {
   font-size: 0.9rem;
   padding: 0px;
-  height: 95%;
-  width: 100%;
+  width:100%;
+  flex: 2 0 20vh;
+  
 
 }
 
 .dailyView {
-  height:30vw;
-  width: 70vw;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+@media (min-width: $max-mobile-width) {
+  .dailyView {
+    height: 40vh;
+  }
 }
