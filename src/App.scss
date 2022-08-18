@@ -19,22 +19,9 @@ body {
 }
 
 
-
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   margin: auto;
-  width: min(80vw,$max-content-width);
+  max-width: $max-content-width;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -46,13 +33,4 @@ body {
 
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

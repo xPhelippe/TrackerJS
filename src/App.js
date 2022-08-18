@@ -53,7 +53,7 @@ function App() {
                 <div className="App-header">
                     <Header />
                     <Navbar />
-                    <Paper>
+                    <Paper sx={{ width: "100%" }}>
                         <Outlet />
                     </Paper>
                     <Footer />
