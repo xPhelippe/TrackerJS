@@ -56,20 +56,22 @@ function HomePage(props) {
         setYearData(DataTransformer.createYeardata(filteredData));
     }, [rawData, selectedhabit]);
 
-    function addData(num) {
+    function addData(obj) {
+        const time = obj.time;
+        const val = obj.value;
         setRawData([
             ...rawData,
             {
-                time: new Date(Date.now()),
-                value: parseInt(num),
+                time: time,
+                value: parseFloat(val),
                 habit: selectedhabit,
             },
         ]);
         setLocalData([
             ...rawData,
             {
-                time: new Date(Date.now()),
-                value: parseInt(num),
+                time: time,
+                value: parseFloat(val),
                 habit: selectedhabit,
             },
         ]);

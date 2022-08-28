@@ -6,18 +6,55 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { useState } from "react";
 import Button from "@mui/material/Button";
 import "./submitForm.scss";
+import { Snackbar, Alert } from "@mui/material";
 
 function SubmitForm(props) {
-    const [date, setDate] = React.useState(Date.now());
+    const [time, setTime] = React.useState(Date.now());
 
-    const handleChange = (newValue) => {
-        setDate(newValue);
+    const changeTime = (newValue) => {
+        setTime(new Date(newValue));
     };
+
     const [newVal, setNewVal] = useState("");
 
+    const [alert, setAlert] = useState(false);
+    const [alertMsg, setAlertMsg] = useState("");
+
     const click = () => {
-        props.submit(newVal);
+        // some input validation
+
+        if (isNaN(newVal)) {
+            setAlertMsg("Please input a positive number");
+            setAlert(true);
+
+            return;
+        }
+
+        if (newVal <= 0) {
+            setAlertMsg("Please input a positive number");
+            setAlert(true);
+
+            return;
+        }
+
+        const inTime = new Date(time);
+
+        if (inTime > new Date(Date.now())) {
+            setAlertMsg("Time cannot be in the future");
+            setAlert(true);
+
+            return;
+        }
+
+        props.submit({
+            value: newVal,
+            time: new Date(time),
+        });
         setNewVal("");
+    };
+
+    const handleClose = () => {
+        setAlert(false);
     };
 
     return (
@@ -31,14 +68,13 @@ function SubmitForm(props) {
                         onChange={(evt) => setNewVal(evt.target.value)}
                         id="outlined-basic"
                         variant="outlined"
-                        size="small"
                     />
-                    {/* <DateTimePicker
+                    <DateTimePicker
                         label="Time"
-                        value={date}
-                        onChange={handleChange}
+                        value={time}
+                        onChange={changeTime}
                         renderInput={(params) => <TextField {...params} />}
-                    /> */}
+                    />
                     <Button
                         className="button"
                         variant="contained"
@@ -48,6 +84,19 @@ function SubmitForm(props) {
                     </Button>
                 </div>
             </LocalizationProvider>
+            <Snackbar
+                open={alert}
+                autoHideDuration={3000}
+                onClose={handleClose}
+            >
+                <Alert
+                    onClose={handleClose}
+                    severity="warning"
+                    variant="filled"
+                >
+                    {alertMsg}
+                </Alert>
+            </Snackbar>
         </React.Fragment>
     );
 }
