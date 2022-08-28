@@ -12,12 +12,13 @@ import "./homePage.scss";
 import useLocalStorage from "use-local-storage";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+import { Container } from "@mui/material";
 
 function HomePage(props) {
-    const [habits, setHabits] = useState(["gym", "water"]);
-    const [selectedhabit, setSelectedHabit] = useState("gym");
+    const [habits, setHabits] = useLocalStorage("habits", []);
+    const [selectedhabit, setSelectedHabit] = useState(habits[0]);
     const [localData, setLocalData] = useLocalStorage("data", []);
-    const [rawData, setRawData] = useState("");
+    const [rawData, setRawData] = useState([]);
 
     const [dailyData, setDailyData] = useState([]);
     const [weekData, setWeekData] = useState([]);
@@ -33,6 +34,7 @@ function HomePage(props) {
             newData.push({
                 time: new Date(localData[i].time),
                 value: localData[i].value,
+                habit: localData[i].habit,
             });
         }
 
@@ -42,20 +44,34 @@ function HomePage(props) {
 
     // create the array for data throughout the day
     useEffect(() => {
-        setDailyData(DataTransformer.createDayData(rawData));
-        setWeekData(DataTransformer.createWeekData(rawData));
-        setMonthData(DataTransformer.createMonthData(rawData));
-        setYearData(DataTransformer.createYeardata(rawData));
-    }, [rawData]);
+        //filter rawdata
+        const filteredData = rawData.filter((el) => {
+            return el.habit === selectedhabit;
+        });
+
+        // create data for graphs
+        setDailyData(DataTransformer.createDayData(filteredData));
+        setWeekData(DataTransformer.createWeekData(filteredData));
+        setMonthData(DataTransformer.createMonthData(filteredData));
+        setYearData(DataTransformer.createYeardata(filteredData));
+    }, [rawData, selectedhabit]);
 
     function addData(num) {
         setRawData([
             ...rawData,
-            { time: new Date(Date.now()), value: parseInt(num) },
+            {
+                time: new Date(Date.now()),
+                value: parseInt(num),
+                habit: selectedhabit,
+            },
         ]);
         setLocalData([
             ...rawData,
-            { time: new Date(Date.now()), value: parseInt(num) },
+            {
+                time: new Date(Date.now()),
+                value: parseInt(num),
+                habit: selectedhabit,
+            },
         ]);
     }
 
@@ -80,12 +96,15 @@ function HomePage(props) {
 
     return (
         <React.Fragment>
-            {/* <div className="habitSelector">
+            <div className="habitSelector">
+                <p>Habit Select:</p>
                 <Select
-                    fullWidth
+                    sx={{ marginTop: "10px" }}
                     value={selectedhabit}
-                    label="Habit"
+                    fullWidth
+                    label=""
                     onChange={changeSelectedHabit}
+                    size="small"
                 >
                     {habits &&
                         habits.map((hab, key) => {
@@ -96,7 +115,8 @@ function HomePage(props) {
                             );
                         })}
                 </Select>
-            </div> */}
+            </div>
+
             <SubmitForm submit={addData} />
 
             <div className="chartandOptions">
