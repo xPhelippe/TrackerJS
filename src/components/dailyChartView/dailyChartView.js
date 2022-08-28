@@ -1,5 +1,12 @@
 import React from "react";
-import { XAxis, YAxis, BarChart, Bar, ResponsiveContainer } from "recharts";
+import {
+    XAxis,
+    YAxis,
+    BarChart,
+    Bar,
+    ResponsiveContainer,
+    Tooltip,
+} from "recharts";
 import "./dailyChartView.scss";
 import useLocalStorage from "use-local-storage";
 
@@ -62,6 +69,7 @@ function DailyChartView(props) {
                             className="barChart"
                         />
                         <YAxis />
+                        <Tooltip />
                     </BarChart>
                 </ResponsiveContainer>
             </div>
