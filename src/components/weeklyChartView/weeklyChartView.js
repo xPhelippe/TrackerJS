@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { XAxis, YAxis, BarChart, Bar, ResponsiveContainer } from "recharts";
+import {
+    XAxis,
+    YAxis,
+    BarChart,
+    Bar,
+    ResponsiveContainer,
+    Tooltip,
+} from "recharts";
 import "./weeklyChartView.scss";
 import React from "react";
 
@@ -33,6 +40,7 @@ function WeeklyChartView(props) {
                             className="barChart"
                         />
                         <YAxis />
+                        <Tooltip />
                     </BarChart>
                 </ResponsiveContainer>
             </div>
