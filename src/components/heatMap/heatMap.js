@@ -1,7 +1,8 @@
 import React from "react";
 import "./heatMap.scss";
 import { useEffect, useState } from "react";
-import { Container } from "@mui/material";
+import Tooltip from "@mui/material/Tooltip";
+
 function HeatMap(props) {
     const months = [
         "Jan",
@@ -21,7 +22,7 @@ function HeatMap(props) {
     const [data, setData] = useState(props.data);
 
     useEffect(() => {
-        console.log("Updating data for heat map");
+        // console.log("Updating data for heat map");
 
         let newData = [];
 
@@ -34,7 +35,7 @@ function HeatMap(props) {
             }
         }
 
-        if (max === 0) return;
+        if (max === 0) max = 1;
 
         // calculate color value
 
@@ -76,7 +77,7 @@ function HeatMap(props) {
                 <div className="monthContainer">
                     {months.map((obj, monthKey) => {
                         return (
-                            <React.Fragment>
+                            <React.Fragment key={monthKey}>
                                 <div className="month">{obj}</div>
                                 <div className="dayContainer">
                                     {data &&
@@ -87,13 +88,19 @@ function HeatMap(props) {
                                                 return null;
 
                                             return (
-                                                <div
-                                                    key={key}
-                                                    className={
-                                                        "day color-scale-" +
-                                                        obj.color
-                                                    }
-                                                ></div>
+                                                <Tooltip
+                                                    title={obj.value.toString()}
+                                                    arrow
+                                                    followCursor
+                                                >
+                                                    <div
+                                                        key={key}
+                                                        className={
+                                                            "day color-scale-" +
+                                                            obj.color
+                                                        }
+                                                    ></div>
+                                                </Tooltip>
                                             );
                                         })}
                                 </div>

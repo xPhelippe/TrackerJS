@@ -12,7 +12,7 @@ import useLocalStorage from "use-local-storage";
 
 function DailyChartView(props) {
     const primColor = useLocalStorage(
-        "Color",
+        "colors",
         getComputedStyle(document.querySelector(":root"))
             .getPropertyValue("--back-color")
             .trim()

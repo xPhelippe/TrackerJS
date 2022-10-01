@@ -2,15 +2,19 @@ import "./modHabits.scss";
 import useLocalStorage from "use-local-storage";
 import HabitCard from "../habitCard/habitCard";
 import { Button, TextField } from "@mui/material";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import ButtonGroup from "@mui/material/ButtonGroup";
+import { HabitContext } from "../../../utils/habit-context";
 
 function ModHabits(props) {
-    const [habits, setHabits] = useLocalStorage("habits", []);
-    const [habitsData, setHabitsData] = useLocalStorage("data", []);
+    const habitCtx = useContext(HabitContext);
+    const habits = habitCtx.habits;
+    const setHabits = habitCtx.setHabits;
+
+    const habitsData = habitCtx.habitData;
+    const setHabitsData = habitCtx.setHabitData;
 
     const [isAdding, setIsAdding] = useState(false);
-
     const [newHabit, setNewHabit] = useState("");
 
     // to make it so you can only delete one habit at a time
@@ -18,22 +22,36 @@ function ModHabits(props) {
 
     const addNewHabit = () => {
         if (newHabit.length !== 0) {
-            setHabits([...habits, newHabit]);
+            setHabits([
+                ...habits,
+                {
+                    name: newHabit,
+                    color: "#285238",
+                },
+            ]);
             setNewHabit("");
         }
         setIsAdding(false);
     };
 
     const removeHabit = (habit) => {
+        // add the new habit to the array in local storage
         const newHabits = habits.filter((h) => {
-            return h !== habit;
+            return h.name !== habit;
         });
 
         if (newHabits.length === 0) {
-            setHabits(["default"]);
+            setHabits([
+                {
+                    name: "Default",
+                    color: "#285239",
+                },
+            ]);
         } else {
             setHabits(newHabits);
         }
+
+        // remove the data for the habit from habitsData
         const newHabitsData = habitsData.filter((h) => {
             return h.habit != habit;
         });
@@ -52,7 +70,7 @@ function ModHabits(props) {
                 habits.map((habit, key) => {
                     return (
                         <HabitCard
-                            data={habit}
+                            data={habit.name}
                             key={key}
                             delete={removeHabit}
                             isaCardOpen={isaCardOpen}

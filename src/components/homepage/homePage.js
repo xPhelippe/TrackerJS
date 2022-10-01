@@ -1,7 +1,7 @@
 import React from "react";
 import SubmitForm from "../submitForm/submitForm";
 import DailyChartView from "../dailyChartView/dailyChartView";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import RadioOptions from "../radioOptions/radioOptions";
 import { Paper } from "@mui/material";
 import DataTransformer from "../../utils/dataTransformer";
@@ -13,11 +13,15 @@ import useLocalStorage from "use-local-storage";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { Container } from "@mui/material";
+import { HabitContext } from "../../utils/habit-context";
 
 function HomePage(props) {
-    const [habits, setHabits] = useLocalStorage("habits", []);
-    const [selectedhabit, setSelectedHabit] = useState(habits[0]);
-    const [localData, setLocalData] = useLocalStorage("data", []);
+    const habitCtx = useContext(HabitContext);
+    const habits = habitCtx.habits;
+    const [selectedhabit, setSelectedHabit] = useState(
+        habits[habitCtx.habitIdx].name
+    );
+    const [ctxData, setCtxData] = useState(habitCtx.habitData);
     const [rawData, setRawData] = useState([]);
 
     const [dailyData, setDailyData] = useState([]);
@@ -30,14 +34,14 @@ function HomePage(props) {
     useEffect(() => {
         let newData = [];
 
-        for (let i = 0; i < localData.length; i++) {
+        for (let i = 0; i < ctxData.length; i++) {
             newData.push({
-                time: new Date(localData[i].time),
-                value: localData[i].value,
-                habit: localData[i].habit,
+                id: ctxData[i].id,
+                time: new Date(ctxData[i].time),
+                value: ctxData[i].value,
+                habit: ctxData[i].habit,
             });
         }
-
         setRawData(newData);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -59,17 +63,21 @@ function HomePage(props) {
     function addData(obj) {
         const time = obj.time;
         const val = obj.value;
+        const id = rawData.length > 0 ? rawData[rawData.length - 1].id + 1 : 0;
+
         setRawData([
             ...rawData,
             {
+                id: id,
                 time: time,
                 value: parseFloat(val),
                 habit: selectedhabit,
             },
         ]);
-        setLocalData([
+        habitCtx.setHabitData([
             ...rawData,
             {
+                id: id,
                 time: time,
                 value: parseFloat(val),
                 habit: selectedhabit,
@@ -77,7 +85,10 @@ function HomePage(props) {
         ]);
     }
 
+    // update local and global state to the new habit
     function changeSelectedHabit(e) {
+        const newHabitIdx = habits.findIndex((x) => x.name === e.target.value);
+        habitCtx.setHabitIdx(newHabitIdx);
         setSelectedHabit(e.target.value);
     }
 
@@ -111,8 +122,8 @@ function HomePage(props) {
                     {habits &&
                         habits.map((hab, key) => {
                             return (
-                                <MenuItem value={hab} key={key}>
-                                    {hab}
+                                <MenuItem value={hab.name} key={key}>
+                                    {hab.name}
                                 </MenuItem>
                             );
                         })}

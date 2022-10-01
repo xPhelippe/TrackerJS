@@ -1,6 +1,7 @@
 import React from "react";
 import "./monthHeatMap.scss";
 import { useEffect, useState } from "react";
+import Tooltip from "@mui/material/Tooltip";
 
 function MonthHeatMap(props) {
     const months = [
@@ -44,7 +45,7 @@ function MonthHeatMap(props) {
             }
         }
 
-        if (max === 0) return;
+        if (max === 0) max = 1;
 
         // calculate color value
 
@@ -93,21 +94,30 @@ function MonthHeatMap(props) {
 
                 {repeatDivsStart &&
                     repeatDivsStart.map((obj, key) => {
-                        return <div className="emptyDay" />;
+                        return <div className="emptyDay" key={key} />;
                     })}
 
                 {data &&
                     data.map((obj, key) => {
                         return (
-                            <div
-                                className={"MviewDay color-scale-" + obj.color}
-                            />
+                            <Tooltip
+                                title={obj.value.toString()}
+                                arrow
+                                followCursor
+                                key={key}
+                            >
+                                <div
+                                    className={
+                                        "MviewDay color-scale-" + obj.color
+                                    }
+                                />
+                            </Tooltip>
                         );
                     })}
 
                 {repeatDivsEnd &&
                     repeatDivsEnd.map((obj, key) => {
-                        return <div className="emptyDay" />;
+                        return <div className="emptyDay" key={key} />;
                     })}
             </div>
         </React.Fragment>

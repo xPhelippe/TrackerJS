@@ -1,5 +1,5 @@
-
 # TrackerJS
+
 Welcome to Tracker.js, a productivity app aimed to help the user slowly develop a habit. Launch the website to see a day, week, month, and year view of progress as a key habit is tracked. To track a habit, enter a number into the input field and press 'Add'; the value and time is tracked for all entries. Look back at the end of the year and see the progress made!
 
 check it out here: https://elated-bhaskara-d19972.netlify.app
@@ -30,7 +30,7 @@ $ npm start
 
 ### [React](https://reactjs.org/)
 
-A framework for creating front end websites. Was used to create component view for the different pages on the website. 
+A framework for creating front end websites. Was used to create component view for the different pages on the website.
 
 ### [Material UI](https://mui.com/)
 
@@ -60,10 +60,10 @@ A React component for picking a color.
 
 As with all projects, I had to pick a place to stop at some point. Below is a list of features that may be implemented in the future if I were to revisit the app
 
-- let  the user modify their data
-- let the user track multiple habits through a drop down menu
-- Show numbers on bar graph and on hover for heat maps
-- let the user name the habit they are trying to build
-- make the website mobile friendly
-- let the user add data at a different time than now
-- add input validation and a small pop-up for errors on the input field
+[x] let the user modify their data
+[x] let the user track multiple habits through a drop down menu
+[x] Show numbers on bar graph and on hover for heat maps
+[x] let the user name the habit they are trying to build
+[x] make the website mobile friendly
+[x] let the user add data at a different time than now
+[x] add input validation and a small pop-up for errors on the input field
