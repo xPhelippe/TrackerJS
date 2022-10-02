@@ -1,0 +1,25 @@
+.ModifyHabits {
+
+    max-width: 90%;
+    margin: 0 auto;
+
+    h3 {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+
+    .colorPicker {
+        display: flex;
+        gap: 0.5rem;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .saveButtons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.5rem;
+    }
+}
