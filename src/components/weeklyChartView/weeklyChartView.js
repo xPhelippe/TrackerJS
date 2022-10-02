@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
     XAxis,
     YAxis,
@@ -9,13 +9,11 @@ import {
 } from "recharts";
 import "./weeklyChartView.scss";
 import React from "react";
+import { HabitContext } from "../../utils/habit-context";
 
 function WeeklyChartView(props) {
-    const primColor = useState(
-        getComputedStyle(document.querySelector(":root"))
-            .getPropertyValue("--back-color")
-            .trim()
-    )[0];
+    const habitCtx = useContext(HabitContext);
+    const primColor = habitCtx.habits[habitCtx.habitIdx].color;
 
     const data = props.data;
 

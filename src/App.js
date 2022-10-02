@@ -10,14 +10,14 @@ import Paper from "@mui/material/Paper";
 import { HabitContext } from "./utils/habit-context";
 
 function App() {
-    const localColor = useLocalStorage("colors", "#285238")[0];
-    const [primColor, setPrimColor] = useState(
-        getComputedStyle(document.querySelector(":root"))
-            .getPropertyValue("--back-color")
-            .trim()
-    );
+    // const localColor = useLocalStorage("colors", "#285238")[0];
+    // const [primColor, setPrimColor] = useState(
+    //     getComputedStyle(document.querySelector(":root"))
+    //         .getPropertyValue("--back-color")
+    //         .trim()
+    // );
 
-    const params = useSearchParams()[0];
+    //    / const params = useSearchParams()[0];
 
     const [habits, setHabits] = useLocalStorage("habits", [
         { name: "Default", color: "#285238" },
@@ -37,37 +37,22 @@ function App() {
         [habitIdx, habitData, habits]
     );
 
+    // update colors when the habits change
+    useEffect(() => {
+        // set the root query selector
+        document
+            .querySelector(":root")
+            .style.setProperty("--back-color", habits[habitIdx].color);
+    }, [habitIdx, habits]);
+
     useEffect(() => {
         console.log(habitContext);
     }, [habitContext]);
 
-    // get the color from the parameters in the URL
-    useEffect(() => {
-        // console.log("serach params");
-        if (params.get("color")) setPrimColor(params.get("color").trim());
-    }, [params]);
-
-    // when the local color changes, set the new color
-    useEffect(() => {
-        // console.log("local color activated");
-
-        // set color to local color
-        document
-            .querySelector(":root")
-            .style.setProperty("--back-color", localColor);
-
-        setPrimColor(
-            getComputedStyle(document.querySelector(":root")).getPropertyValue(
-                "--back-color"
-            )
-        );
-    }, [localColor]);
-    // TODO Find more efficient way to change theme than query string
-
     let theme = createTheme({
         palette: {
             primary: {
-                main: primColor,
+                main: habits[habitIdx].color,
             },
         },
     });

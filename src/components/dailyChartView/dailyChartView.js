@@ -8,15 +8,12 @@ import {
     Tooltip,
 } from "recharts";
 import "./dailyChartView.scss";
-import useLocalStorage from "use-local-storage";
+import { useContext } from "react";
+import { HabitContext } from "../../utils/habit-context";
 
 function DailyChartView(props) {
-    const primColor = useLocalStorage(
-        "colors",
-        getComputedStyle(document.querySelector(":root"))
-            .getPropertyValue("--back-color")
-            .trim()
-    )[0];
+    const habitCtx = useContext(HabitContext);
+    const primColor = habitCtx.habits[habitCtx.habitIdx].color;
 
     const data = props.data;
 
