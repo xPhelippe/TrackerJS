@@ -79,16 +79,14 @@ function ModData(props) {
                         {data &&
                             data.map((obj, key) => {
                                 return (
-                                    <>
-                                        <DataCard
-                                            data={obj}
-                                            colSizes={colSizes}
-                                            key={key}
-                                            row={key}
-                                            changeRow={changeRow}
-                                            deleteRow={deleteRow}
-                                        />
-                                    </>
+                                    <DataCard
+                                        data={obj}
+                                        colSizes={colSizes}
+                                        key={key}
+                                        row={key}
+                                        changeRow={changeRow}
+                                        deleteRow={deleteRow}
+                                    />
                                 );
                             })}
                     </Grid>

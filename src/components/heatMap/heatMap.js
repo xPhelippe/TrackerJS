@@ -22,8 +22,6 @@ function HeatMap(props) {
     const [data, setData] = useState(props.data);
 
     useEffect(() => {
-        // console.log("Updating data for heat map");
-
         let newData = [];
 
         //find max value

@@ -34,10 +34,6 @@ function DataCard(props) {
 
     const isGrey = props.row % 2 === 1;
 
-    useEffect(() => {
-        console.log(newValues);
-    }, []);
-
     const changeNewTime = (newTime) => {
         setNewValues((prevState) => ({
             ...prevState,
@@ -83,7 +79,6 @@ function DataCard(props) {
     };
 
     const editRow = () => {
-        console.log("editing row with id " + props.data.id);
         props.changeRow(
             props.data.id,
             newValues.time,
@@ -96,7 +91,6 @@ function DataCard(props) {
     };
 
     const deleteRow = () => {
-        console.log("deleting row with id: " + props.data.id);
         props.deleteRow(props.data.id);
         setIsDeleting(false);
         setIsEditing(false);
@@ -214,10 +208,10 @@ function DataCard(props) {
                                     >
                                         <EditIcon />
                                     </IconButton>
-                                    <IconButton>
-                                        <DeleteIcon
-                                            onClick={() => setIsDeleting(true)}
-                                        />
+                                    <IconButton
+                                        onClick={() => setIsDeleting(true)}
+                                    >
+                                        <DeleteIcon />
                                     </IconButton>
                                 </>
                             )}
