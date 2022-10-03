@@ -110,7 +110,7 @@ function HomePage(props) {
     return (
         <React.Fragment>
             <div className="habitSelector">
-                <p>Habit Select:</p>
+                <h2>Habit Select:</h2>
                 <Select
                     sx={{ marginTop: "10px" }}
                     value={selectedhabit}
