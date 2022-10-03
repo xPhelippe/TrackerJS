@@ -1,49 +1,27 @@
-import bars from "./Bars.png";
-import enter from "./EnterValue.png";
-import main from "./MainIntro.png";
 import year from "./Year.png";
+import home from "./homePage.png";
+import edit from "./EditPage.png";
 
 const data = [
     {
         title: "Welcome!",
         content:
-            "Welcome to Tracker.js! This project was inspired to\
-        help anyone track a key habit that they want to\
-        develop. Feel free to shop around, check out the\
-        pretty charts, and maybe even start tracking a habit\
-        of your own!",
+            "Welcome to TrackerJS, a simple way for you to keep track of things. Use it to record a new habit you want to for or to keep tabs on a random event. Investigate the different views to try and find patterns. ",
         image: year,
         alt: "year view",
     },
     {
         title: "How to Use",
         content:
-            "After deciding on a habit to watch, pick a way to\
-        measure it. This could be glasses of water drank,\
-        number of pushups pushed, or number of pages read.\
-        Whenever you have an update, enter the number in the\
-        text box. Tracker.js will keep track of things over\
-        time.",
-        image: enter,
+            "Select an activity from the drop down menu to view and modify the data for it. input an amount and a time and press add to record the event. Click on the many different views to see what patterns occur.",
+        image: home,
         alt: "enter data here",
-    },
-    {
-        title: "",
-        content:
-            " As data is entered, the daily, weekly, monthly, and\
-        yearly views are updated. You may not be able to see\
-        your biceps grow, but you most certainly can watch\
-        these bars get taller.",
-        image: bars,
-        alt: "bar grapn",
     },
     {
         title: "And There's More!",
         content:
-            "In addition, feel free to visit the other tabs where\
-        you can see a demo of a full board, change the color\
-        of the site, and view the source code.",
-        image: main,
+            "Explore the Edit page to add more habits, modify past data entries, and give each habit a unique color. Navigate to the Demo page to see what the graphs look like when filled with data. Finally, Click on the Code tab to see how this web app was made.",
+        image: edit,
         alt: "Main View",
     },
 ];

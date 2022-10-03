@@ -1,10 +1,5 @@
 import React from "react";
-import { Paper } from "@mui/material";
 import "./about.scss";
-import Main from "./MainIntro.png";
-import Enter from "./EnterValue.png";
-import Bars from "./Bars.png";
-import Year from "./Year.png";
 import data from "./aboutData.js";
 
 function About(props) {
