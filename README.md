@@ -1,8 +1,8 @@
 # TrackerJS
 
-Welcome to Tracker.js, a productivity app aimed to help the user slowly develop a habit. Launch the website to see a day, week, month, and year view of progress as a key habit is tracked. To track a habit, enter a number into the input field and press 'Add'; the value and time is tracked for all entries. Look back at the end of the year and see the progress made!
+Welcome to Tracker.js, a productivity app aimed to help the user slowly develop their habits. Launch the website to see a day, week, month, and year view of progress. To track, select a habit from the drop down menu, enter a number into the input field, select the time the event took place, and press 'Add'; the value and time is tracked for all entries. Look back at the end of the year and see the progress made!
 
-check it out here: https://elated-bhaskara-d19972.netlify.app
+check it out here: https://trackerjs.xphelippe.com
 
 ### Graphics
 
@@ -10,7 +10,7 @@ Each graphic is it's own component. The [day](https://github.com/xPhelippe/Track
 
 ### Data
 
-Once a number is added, the value and the current timestamp are appended to an array and stored in local storage. When the home page is loaded, This array is read and a useEffect() hook is triggered to process the data for each of the 4 views, relying on helper functions created in [src/utils/dataTransformer.js](https://github.com/xPhelippe/TrackerJS/blob/main/src/utils/dataTransformer.js) for the data processing.
+Once a number is added, the value and the entered timestamp are appended to an array and stored in local storage. When the home page is loaded, This array is read and a hook is triggered to process the data for each of the 4 views, relying on helper functions created in [src/utils/dataTransformer.js](https://github.com/xPhelippe/TrackerJS/blob/main/src/utils/dataTransformer.js) for the data processing. To maintain consistency and ensure all componets are updated on a change in data, React Context is used to maintain state across the application
 
 ### Changing the color
 
@@ -55,15 +55,3 @@ A React library for creating and routing to pages on the website. Used to create
 ### [react-colorful](https://omgovich.github.io/react-colorful/)
 
 A React component for picking a color.
-
-# Future Features
-
-As with all projects, I had to pick a place to stop at some point. Below is a list of features that may be implemented in the future if I were to revisit the app
-
-[x] let the user modify their data
-[x] let the user track multiple habits through a drop down menu
-[x] Show numbers on bar graph and on hover for heat maps
-[x] let the user name the habit they are trying to build
-[x] make the website mobile friendly
-[x] let the user add data at a different time than now
-[x] add input validation and a small pop-up for errors on the input field
