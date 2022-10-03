@@ -146,88 +146,91 @@ function ModHabits(props) {
     return (
         <>
             <h2>Habit Customization</h2>
-            <Grid
-                component={Container}
-                spacing={2}
-                container
-                className="ModifyHabits"
-            >
-                <Grid item xs={12} sm={3}>
-                    <h3>Habit Select</h3>
-                    <MenuList>
-                        {habits &&
-                            habits.map((hab, key) => (
-                                <MenuItem
-                                    key={key}
-                                    onClick={() => setSelectedHabit(key)}
-                                >
-                                    <ListItemText>{hab.name}</ListItemText>
-                                </MenuItem>
-                            ))}
+            <Container>
+                <Grid
+                    // component={Container}
+                    spacing={2}
+                    container
+                    className="ModifyHabits"
+                >
+                    <Grid item xs={12} sm={3}>
+                        <h3>Habit Select</h3>
+                        <MenuList>
+                            {habits &&
+                                habits.map((hab, key) => (
+                                    <MenuItem
+                                        key={key}
+                                        onClick={() => setSelectedHabit(key)}
+                                    >
+                                        <ListItemText>{hab.name}</ListItemText>
+                                    </MenuItem>
+                                ))}
 
-                        <Divider />
-                        <MenuItem onClick={() => addNewHabit()}>
-                            <ListItemIcon>
-                                <AddIcon />
-                            </ListItemIcon>
-                            <ListItemText>New Habit</ListItemText>
-                        </MenuItem>
-                    </MenuList>
+                            <Divider />
+                            <MenuItem onClick={() => addNewHabit()}>
+                                <ListItemIcon>
+                                    <AddIcon />
+                                </ListItemIcon>
+                                <ListItemText>New Habit</ListItemText>
+                            </MenuItem>
+                        </MenuList>
+                    </Grid>
+                    <Grid item xs={12} sm={9}>
+                        <h3>Name</h3>
+                        <TextField
+                            value={habitName}
+                            fullWidth
+                            onChange={(e) => setHabitName(e.target.value)}
+                            variant="outlined"
+                        ></TextField>
+                        <h3>Color Customization</h3>
+                        <div className="colorPicker">
+                            <HexColorPicker color={color} onChange={setColor} />
+                        </div>
+                        <div className="saveButtons">
+                            {isDeleting ? (
+                                <>
+                                    <p>Are you Sure?</p>
+                                    <Button
+                                        variant="contained"
+                                        color="error"
+                                        startIcon={<CheckIcon />}
+                                        onClick={() => removeHabit()}
+                                    >
+                                        Yes
+                                    </Button>
+                                    <Button
+                                        variant="contained"
+                                        startIcon={<CloseIcon />}
+                                        onClick={() => setIsDeleting(false)}
+                                    >
+                                        No
+                                    </Button>
+                                </>
+                            ) : (
+                                <>
+                                    <Button
+                                        variant="contained"
+                                        startIcon={<CheckIcon />}
+                                        onClick={() => changeHabit()}
+                                    >
+                                        Save
+                                    </Button>
+                                    <Button
+                                        variant="contained"
+                                        startIcon={<DeleteIcon />}
+                                        color="error"
+                                        onClick={() => setIsDeleting(true)}
+                                    >
+                                        Delete Habit
+                                    </Button>
+                                </>
+                            )}
+                        </div>
+                    </Grid>
                 </Grid>
-                <Grid item xs={12} sm={9}>
-                    <h3>Name</h3>
-                    <TextField
-                        value={habitName}
-                        fullWidth
-                        onChange={(e) => setHabitName(e.target.value)}
-                        variant="outlined"
-                    ></TextField>
-                    <h3>Color Customization</h3>
-                    <div className="colorPicker">
-                        <HexColorPicker color={color} onChange={setColor} />
-                    </div>
-                    <div className="saveButtons">
-                        {isDeleting ? (
-                            <>
-                                <p>Are you Sure?</p>
-                                <Button
-                                    variant="contained"
-                                    color="error"
-                                    startIcon={<CheckIcon />}
-                                    onClick={() => removeHabit()}
-                                >
-                                    Yes
-                                </Button>
-                                <Button
-                                    variant="contained"
-                                    startIcon={<CloseIcon />}
-                                    onClick={() => setIsDeleting(false)}
-                                >
-                                    No
-                                </Button>
-                            </>
-                        ) : (
-                            <>
-                                <Button
-                                    variant="contained"
-                                    startIcon={<CheckIcon />}
-                                    onClick={() => changeHabit()}
-                                >
-                                    Save
-                                </Button>
-                                <Button
-                                    variant="contained"
-                                    startIcon={<DeleteIcon />}
-                                    color="error"
-                                    onClick={() => setIsDeleting(true)}
-                                >
-                                    Delete Habit
-                                </Button>
-                            </>
-                        )}
-                    </div>
-                </Grid>
-            </Grid>
+            </Container>
+
             <Snackbar
                 open={alert}
                 autoHideDuration={3000}
