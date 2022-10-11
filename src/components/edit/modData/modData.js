@@ -44,55 +44,66 @@ function ModData(props) {
         <>
             <div className="modifyData">
                 <h2>Modify Data</h2>
-                <Container>
-                    <div className="header">
-                        <Grid container maxWidth={500} className="grid">
-                            <Grid
-                                item
-                                xs={colSizes["xs"][0]}
-                                sm={colSizes["sm"][0]}
-                            ></Grid>
-                            <Grid
-                                item
-                                xs={colSizes["xs"][1]}
-                                sm={colSizes["sm"][1]}
-                            >
-                                Time
-                            </Grid>
-                            <Grid
-                                item
-                                xs={colSizes["xs"][2]}
-                                sm={colSizes["sm"][2]}
-                            >
-                                Value
-                            </Grid>
-                            <Grid
-                                item
-                                xs={colSizes["xs"][3]}
-                                sm={colSizes["sm"][3]}
-                            >
-                                Habit
-                            </Grid>
+                <div className="header">
+                    <Grid
+                        container
+                        maxWidth={500}
+                        className="grid"
+                        sx={{
+                            margin: "0 auto",
+                        }}
+                    >
+                        <Grid
+                            item
+                            xs={colSizes["xs"][0]}
+                            sm={colSizes["sm"][0]}
+                        ></Grid>
+                        <Grid
+                            item
+                            xs={colSizes["xs"][1]}
+                            sm={colSizes["sm"][1]}
+                        >
+                            Time
                         </Grid>
-                    </div>
-                    <div className="row">
-                        <Grid container maxWidth={500}>
-                            {data &&
-                                data.map((obj, key) => {
-                                    return (
-                                        <DataCard
-                                            data={obj}
-                                            colSizes={colSizes}
-                                            key={key}
-                                            row={key}
-                                            changeRow={changeRow}
-                                            deleteRow={deleteRow}
-                                        />
-                                    );
-                                })}
+                        <Grid
+                            item
+                            xs={colSizes["xs"][2]}
+                            sm={colSizes["sm"][2]}
+                        >
+                            Value
                         </Grid>
-                    </div>
-                </Container>
+                        <Grid
+                            item
+                            xs={colSizes["xs"][3]}
+                            sm={colSizes["sm"][3]}
+                        >
+                            Habit
+                        </Grid>
+                    </Grid>
+                </div>
+                <div className="row">
+                    <Grid
+                        container
+                        maxWidth={500}
+                        sx={{
+                            margin: "0 auto",
+                        }}
+                    >
+                        {data &&
+                            data.map((obj, key) => {
+                                return (
+                                    <DataCard
+                                        data={obj}
+                                        colSizes={colSizes}
+                                        key={key}
+                                        row={key}
+                                        changeRow={changeRow}
+                                        deleteRow={deleteRow}
+                                    />
+                                );
+                            })}
+                    </Grid>
+                </div>
             </div>
             <br />
         </>
