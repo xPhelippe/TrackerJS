@@ -44,38 +44,38 @@ function ModData(props) {
         <>
             <div className="modifyData">
                 <h2>Modify Data</h2>
-                <div className="header">
-                    <Grid container maxWidth={500} className="grid">
-                        <Grid
-                            item
-                            xs={colSizes["xs"][0]}
-                            sm={colSizes["sm"][0]}
-                        ></Grid>
-                        <Grid
-                            item
-                            xs={colSizes["xs"][1]}
-                            sm={colSizes["sm"][1]}
-                        >
-                            Time
+                <Container>
+                    <div className="header">
+                        <Grid container maxWidth={500} className="grid">
+                            <Grid
+                                item
+                                xs={colSizes["xs"][0]}
+                                sm={colSizes["sm"][0]}
+                            ></Grid>
+                            <Grid
+                                item
+                                xs={colSizes["xs"][1]}
+                                sm={colSizes["sm"][1]}
+                            >
+                                Time
+                            </Grid>
+                            <Grid
+                                item
+                                xs={colSizes["xs"][2]}
+                                sm={colSizes["sm"][2]}
+                            >
+                                Value
+                            </Grid>
+                            <Grid
+                                item
+                                xs={colSizes["xs"][3]}
+                                sm={colSizes["sm"][3]}
+                            >
+                                Habit
+                            </Grid>
                         </Grid>
-                        <Grid
-                            item
-                            xs={colSizes["xs"][2]}
-                            sm={colSizes["sm"][2]}
-                        >
-                            Value
-                        </Grid>
-                        <Grid
-                            item
-                            xs={colSizes["xs"][3]}
-                            sm={colSizes["sm"][3]}
-                        >
-                            Habit
-                        </Grid>
-                    </Grid>
-                </div>
-                <div className="row">
-                    <Container>
+                    </div>
+                    <div className="row">
                         <Grid container maxWidth={500}>
                             {data &&
                                 data.map((obj, key) => {
@@ -91,8 +91,8 @@ function ModData(props) {
                                     );
                                 })}
                         </Grid>
-                    </Container>
-                </div>
+                    </div>
+                </Container>
             </div>
             <br />
         </>
