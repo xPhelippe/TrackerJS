@@ -75,21 +75,23 @@ function ModData(props) {
                     </Grid>
                 </div>
                 <div className="row">
-                    <Grid container maxWidth={500}>
-                        {data &&
-                            data.map((obj, key) => {
-                                return (
-                                    <DataCard
-                                        data={obj}
-                                        colSizes={colSizes}
-                                        key={key}
-                                        row={key}
-                                        changeRow={changeRow}
-                                        deleteRow={deleteRow}
-                                    />
-                                );
-                            })}
-                    </Grid>
+                    <Container>
+                        <Grid container maxWidth={500}>
+                            {data &&
+                                data.map((obj, key) => {
+                                    return (
+                                        <DataCard
+                                            data={obj}
+                                            colSizes={colSizes}
+                                            key={key}
+                                            row={key}
+                                            changeRow={changeRow}
+                                            deleteRow={deleteRow}
+                                        />
+                                    );
+                                })}
+                        </Grid>
+                    </Container>
                 </div>
             </div>
             <br />
